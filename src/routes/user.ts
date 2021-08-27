@@ -4,9 +4,9 @@ import { body } from 'express-validator'
 import { User } from '../models';
 const router = Router();
 // signin
-router.post('/', [
+router.post('/login', [
     body('email').notEmpty().trim().isEmail().normalizeEmail().custom((val: any) => {
-        return User.findOne({ email: val }).then((user: any) => {
+        return User.findOne({ "local.email": val }).then((user: any) => {
             if (!user) {
                 return Promise.reject(`User email doesn't exist!`)
             }
@@ -20,7 +20,7 @@ router.post('/', [
 ], signinUser)
 
 // signup
-router.post('/', [
+router.post('/signup', [
     body('email').notEmpty().trim().isEmail().normalizeEmail().custom((val: any) => {
         return User.findOne({ email: val }).then((user: any) => {
             if (user) {

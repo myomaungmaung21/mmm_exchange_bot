@@ -13,7 +13,8 @@ export const signupUser = async (
   try {
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
-      const error: any = new Error('signupUser failed')
+      const error: any = new Error('signinUser failed')
+      error.data = errors.array()
       error.statusCode = 422
       throw error
     } else {
@@ -53,12 +54,13 @@ export const signinUser = async (
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
       const error: any = new Error('signupUser failed')
+      error.data = errors.array()
       error.statusCode = 422
       throw error
     } else {
       const user = await User.findOne({ 'local.email': req.body.email })
       if (user) {
-        const correctPassword = compareSync(req.body.password, user.password)
+        const correctPassword = compareSync(req.body.password, user.local.password)
         if (correctPassword) {
           const token = generateToken(user);
           const responseData: responseProps = {

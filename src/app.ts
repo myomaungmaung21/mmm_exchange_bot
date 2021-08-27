@@ -8,6 +8,8 @@ import { connectDB } from './db'
 
 //importing from config
 import { server_port } from './config'
+import { CurrencyRouter, RateRouter, UserRouter } from './routes'
+import { errorHandler } from './errorhandler'
 
 const app = express()
 
@@ -22,6 +24,10 @@ const startApp = () => {
   app.listen(server_port, () => {
     console.log(`🌀Server is running at port ${server_port}`)
   })
+  app.use('/api/user', UserRouter)
+  app.use('/api/currency', CurrencyRouter)
+  app.use('/api/rate', RateRouter)
+  app.use(errorHandler)
 }
 
 startApp()
