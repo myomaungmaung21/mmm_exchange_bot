@@ -1,12 +1,12 @@
 import { Request, Response, NextFunction } from 'express'
 import { validationResult } from 'express-validator'
 import { currencyProps, responseProps } from '../interfaces';
-import { Currency, Rate } from '../models';
+import { Currency } from '../models';
 
 // get all currency
 export const currencies = async (_req: Request, res: Response, next: NextFunction) => {
     try {
-        const currencies = await Rate.find();
+        const currencies = await Currency.find();
         if (currencies) {
             const responseData: responseProps = {
                 status: 1,

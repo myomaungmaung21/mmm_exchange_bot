@@ -13,7 +13,7 @@ export const isAuthenticated = (
       const token: string = auth_header.split(' ')[1]
       const decoded_token: any = VerifyToken(token)
       if (decoded_token) {
-        console.log(decoded_token)
+        req.user_id = decoded_token.user._id
         next()
       } else {
         const error: any = new Error('Unauthorized User!')

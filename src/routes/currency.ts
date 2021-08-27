@@ -10,13 +10,13 @@ const router = Router();
 router.get('/', currencies);
 // add currency
 router.post('/', isAuthenticated, [
-    body('name').notEmpty().withMessage("Currency name must not be empty!"),
-    body('keyword').notEmpty().withMessage('Keyword must not be empty')
+    body('name').notEmpty().isUppercase(),
+    body('keyword').notEmpty().isLowercase()
 ], addCurrency)
 // update currency
 router.put('/', isAuthenticated, [
-    body('name').notEmpty().withMessage("Currency name must not be empty!"),
-    body('keyword').notEmpty().withMessage('Keyword must not be empty'),
+    body('name').notEmpty().isUppercase(),
+    body('keyword').notEmpty().isLowercase(),
     body('id').notEmpty().withMessage('Curreny Id must not be empty')
 ], updateCurrency)
 

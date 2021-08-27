@@ -8,7 +8,7 @@ export const connectDB = () => {
     mongoose
       .connect(db_url, {
         useCreateIndex: true,
-        useFindAndModify: true,
+        useFindAndModify: false,
         useNewUrlParser: true,
         useUnifiedTopology: true
       })
