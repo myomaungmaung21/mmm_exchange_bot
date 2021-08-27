@@ -24,4 +24,10 @@ interface responseProps {
   access_token?: string
 }
 
-export { UserProps, responseProps }
+interface currencyProps {
+  name: String,
+  keyword: String,
+  user: String
+}
+
+export { UserProps, responseProps, currencyProps }

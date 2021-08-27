@@ -1,3 +1,4 @@
 import User from './user'
-
-export { User }
+import Currency from './currency'
+import Rate from './rate'
+export { User, Currency, Rate }
