@@ -1,7 +1,3 @@
-interface UserProps {
-  local?: localProps
-  facebook?: facebookProps
-}
 
 interface localProps {
   username?: string
@@ -17,6 +13,11 @@ interface facebookProps {
   name?: string
 }
 
+interface UserProps {
+  local?: localProps
+  facebook?: facebookProps
+}
+
 interface responseProps {
   status: number
   message: string
@@ -25,9 +26,17 @@ interface responseProps {
 }
 
 interface currencyProps {
-  name: String,
-  keyword: String,
-  user: String
+  name: string
+  keyword: string
+  user: string
 }
 
-export { UserProps, responseProps, currencyProps }
+interface rateProps {
+  from_currency: string
+  to_currency: string
+  sell: number
+  buy: number
+  user: string
+}
+
+export { UserProps, responseProps, currencyProps, rateProps }
