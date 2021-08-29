@@ -6,7 +6,7 @@ export const handleMessage = (sender_psid: any, message: any) => {
         const result: any = getHookRates(message.text)
         if (result && result.length > 0) {
             result.forEach((r: any) => {
-                callSendAPI(sender_psid, `1${r.from_currency}🔄${r.to_currency}🔴${r.sell}🔵${r.buy}`)
+                callSendAPI(sender_psid, `${r.from_currency.name}🔄${r.to_currency.name}🔴${r.sell}🔵${r.buy}`)
             })
         }
         else {
@@ -24,7 +24,7 @@ export const handlePostBack = (sender_psid: any, rec_postback: any) => {
     if (data) {
         if (data && data.length > 0) {
             data.forEach((r: any) => {
-                callSendAPI(sender_psid, `1${r.from_currency}🔄${r.to_currency}🔴${r.sell}🔵${r.buy}`)
+                callSendAPI(sender_psid, `${r.from_currency.name}🔄${r.to_currency.name}🔴${r.sell}🔵${r.buy}`)
             })
         }
         else {
